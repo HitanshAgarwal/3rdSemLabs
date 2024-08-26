@@ -18,5 +18,20 @@ private:
 		fuel=2200;
 		
 	}
+public:
+	void information_entry(){
+		cin >> flight_number;
+		cin >> destination;
+		cin >> distance;
+		calculate_fuel();
+	}
+	void display_info(){
+		cout << "Flight Number: " << flight_number << "\nDestination: " << destination << "\nDistance: " << distance << "\nFuel: " << fuel;
+	}
 };
 
+int main(){
+	flight f;
+	f.information_entry();
+	f.display_info();
+}
