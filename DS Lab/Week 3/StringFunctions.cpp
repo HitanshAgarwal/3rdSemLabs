@@ -24,9 +24,9 @@ class Str{
 			int ln = n.getlength(), lm = m.getlength();
 			int minl = min(ln, lm);
 			for (int i = 0; i < minl; i++)
-				if (n[i] > m[i])
+				if (n.s[i] > m.s[i])
 					return 1;
-				else if (m[i] > n[i])
+				else if (m.s[i] > n.s[i])
 					return -1;
 					
 			if (ln == lm)
