@@ -22,7 +22,7 @@ void showpoly(Polynomial p[], int n){
 }
 
 int main(){
-	int n;
+	int n, n3 = 0;
 	cout << "Enter number of terms: ";
 	cin >> n;
 	Polynomial p1[n], p2[n], p3[n + n];
@@ -53,7 +53,7 @@ int main(){
 	cout << "Second Polynomial: " << endl;
 	showpoly(p2, n);
 	cout << "Sum of Polynomials: " << endl;
-	showpoly(p3, sizeof(p3)/sizeof(*p3));
+	showpoly(p3, n3);
 	
 	return 0;
 }
