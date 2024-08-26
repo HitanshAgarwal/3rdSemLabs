@@ -68,4 +68,36 @@ class Str{
 				}
 			}
 		}
+ // Constructor to initialize from a string literal
+    Str(const char* str) {
+        s = str;
+    }
 };
+
+int main() {
+    Str str1("Hello"), str2(" World!"), str3("How are you?");
+
+    // Concatenate str1 and str2
+    str1.concatenate(str1, str2);
+    cout << "Concatenated string: " << str1.s << endl;
+
+    // Compare str1 and str3
+    int result = str1.comparison(str1, str3);
+    if (result == 1) {
+        cout << "str1 is greater than str3" << endl;
+    } else if (result == -1) {
+        cout << "str1 is smaller than str3" << endl;
+    } else {
+        cout << "str1 is equal to str3" << endl;
+    }
+
+    // Insert " there" into str1 at index 6
+    str1.insertsub(Str(" there"), 6);
+    cout << "Inserted string: " << str1.s << endl;
+
+    // Delete "World" from str1
+    str1.del(Str("World"));
+    cout << "Deleted string: " << str1.s << endl;
+
+    return 0;
+}
