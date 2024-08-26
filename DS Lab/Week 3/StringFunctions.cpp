@@ -11,13 +11,7 @@ class Str{
 		}
 		
 		void concatenate(Str n, Str m){
-			int l = n.getlength();
-			for (int i = 0; i < l; i++)
-				s[i] = n.s[i];
-
-			int l2 = m.getlength();
-			for (int i = 0; i < l2; i++)
-				s[i + l] = m.s[i];
+			s = n.s + m.s;
 		}
 		
 		int comparison(Str n, Str m){
@@ -37,19 +31,22 @@ class Str{
 				return -1;
 		}
 		
-		void insertsub(Str n, int ins){
-			int l = getlength(), i, j;
-			string temp;
-			
-			for (i = ins, j= 0; i < l; j++, i++)
-				temp[j] = s[i];
-				
-			for (i = 0; i < n.getlength(); i++)
-				s[i + ins] = n.s[i];
-				
-			for (i = 0; i < l - ins; i++)
-				s[i + ins + n.getlength()] = temp[i];
-		}
+		void insertsub(Str n, int ins) {
+    int l = getlength();
+    string temp(l - ins, '\0');  // Create a temp string of the required size.
+
+    // Copy the part of s from ins to end into temp
+    for (int i = ins, j = 0; i < l; j++, i++)
+        temp[j] = s[i];
+
+    // Insert the new substring n
+    for (int i = 0; i < n.getlength(); i++)
+        s[i + ins] = n.s[i];
+
+    // Copy back the remainder of the original string from temp
+    for (int i = 0; i < l - ins; i++)
+        s[i + ins + n.getlength()] = temp[i];
+}
 		
 		void del(Str n){
 			int i, j;
@@ -61,9 +58,9 @@ class Str{
 					j = 0;
 				if(j == n.getlength())
 				{
-					for (int k = 0; k < i; k++)
-						s[k + i - j] = s[i + k];
-						
+					for (int k = i + 1; k < getlength(); k++)
+    					s[k - j] = s[k];
+					s.resize(getlength() - j);	
 					j = 0;
 				}
 			}
@@ -90,14 +87,11 @@ int main() {
     } else {
         cout << "str1 is equal to str3" << endl;
     }
-
+	
     // Insert " there" into str1 at index 6
-    str1.insertsub(Str(" there"), 6);
+    str1.insertsub(Str(" there"), 5);
     cout << "Inserted string: " << str1.s << endl;
 
-    // Delete "World" from str1
-    str1.del(Str("World"));
-    cout << "Deleted string: " << str1.s << endl;
 
     return 0;
 }
